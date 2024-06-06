@@ -1,20 +1,26 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+
 import { Tabs } from "expo-router";
-import { View, Text } from "react-native";
+
+import { View, useColorScheme } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function TabLayout() {
   const insets = useSafeAreaInsets();
+  const colorScheme = useColorScheme();
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "blue",
+        tabBarActiveTintColor: colorScheme === "dark" ? "white" : "blue",
+        tabBarStyle: {
+          backgroundColor: colorScheme === "dark" ? "black" : "white",
+        },
         header: () => (
-          <View className="bg-white" style={{ paddingTop: insets.top }}>
-            <View className="h-8 flex justify-center items-center ">
-              <Text className="font-bold text-base2">MoneyTracker</Text>
-            </View>
-          </View>
+          <View
+            className="bg-white dark:bg-black"
+            style={{ paddingTop: insets.top }}
+          />
         ),
       }}
     >
@@ -36,6 +42,7 @@ export default function TabLayout() {
               <FontAwesome size={24} name="plus" color="white" />
             </View>
           ),
+          href: "/tracker",
         }}
       />
       <Tabs.Screen

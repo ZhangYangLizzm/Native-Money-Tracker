@@ -1,9 +1,17 @@
 import { View, Text } from "react-native";
 
-export default function Tab() {
+export default function NewTracker() {
   return (
-    <View className="justify-center items-center flex-1">
-      <Text>Tab add</Text>
+    <View className="flex-1">
+      <View>
+        <Text>Header</Text>
+      </View>
+      <View className="flex-1">
+        <Text>content</Text>
+      </View>
+      <View>
+        <Text>footer</Text>
+      </View>
     </View>
   );
 }
